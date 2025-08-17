@@ -1,0 +1,12 @@
+<div class="navbar">
+    <div class="logo">DOUBT’O CLOCK</div>
+    <ul>
+      <li><a href="/">HOME</a></li>
+      <li><a href="/jeeneet">JEE/NEET</a></li>
+      <li><a href="/firstyear">1ST YEAR</a></li>
+    </ul>
+    <div class="coins">
+      <span>100</span>
+      <img src="images/user.png" alt="User">
+    </div>
+  </div>
