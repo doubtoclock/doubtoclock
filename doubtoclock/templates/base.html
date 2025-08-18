@@ -16,7 +16,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      background: {% block gradient %} {% endblock gradient %}
+      background: radial-gradient(#00000012 0.6px, transparent 0.7px) 0 0/3px 3px, {% block gradient %} {% endblock gradient %}
       color: white;
       text-align:center
     }
@@ -55,8 +55,44 @@
     .coins img { width: 32px; border-radius: 50%; }
 
     /* Footer */
-    footer { text-align: center; padding: 20px 10px; font-size: 14px; margin-top: auto; }
+    footer { text-align: center; padding: 20px 10px; font-size: 14px; margin-top: auto; background-color:rgba(255, 255, 255, 0.15)}
     footer a { color: #ddd; }
+
+    .profile-icon {
+      position: absolute;
+      top: 50%;
+      right: 80px;        /* distance from right edge */
+      transform: translateY(-50%); /* vertical centering */
+    }
+    
+    .profile-icon img {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    /* Coin icon styling */
+.coin-icon {
+  position: absolute;
+  top: 50%;
+  right: 140px; /* placed just before profile */
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.coin-icon img {
+  height: 28px;
+  width: 28px;
+  object-fit: cover;
+}
+
+.coin-icon span {
+  font-size: 16px;
+  font-weight: bold;
+  color: gold;
+}
 
     {% block styles %} {% endblock styles %}
   </style>
@@ -85,7 +121,23 @@
             <a class="nav-link" href="/firstyear">First Year</a>
           </li>
         </ul>
-
+      </div>
+      <!-- Coin icon just before profile -->
+      <div class="coin-icon">
+        <img src="static/coin.jpeg" alt="Coins">
+        <span>120</span> <!-- Example count -->
+      </div>
+<!-- Profile icon -->
+<div class="profile-icon">
+  <a href="profilepage">
+    <img src="static/profileout.png" alt="Profile">
+  </a>
+</div>
+      <!-- Profile icon outside collapse -->
+      <div class="profile-icon">
+        <a href = "profilepage">
+        <img src="static/profileout.png" alt="Profile">
+        </a>
       </div>
     </div>
   </nav>

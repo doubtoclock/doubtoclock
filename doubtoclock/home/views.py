@@ -11,5 +11,7 @@ def firstyear(request):
     return render(request, '1styear.html')
 def importantquestion(request):
     return render(request, 'impques.html')
+def profilepage(request):
+    return render(request, 'profilepage.html')
 def about(request):
     return HttpResponse("this is about page") 

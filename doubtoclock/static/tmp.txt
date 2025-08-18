@@ -1,12 +1,119 @@
-<div class="navbar">
-    <div class="logo">DOUBT’O CLOCK</div>
-    <ul>
-      <li><a href="/">HOME</a></li>
-      <li><a href="/jeeneet">JEE/NEET</a></li>
-      <li><a href="/firstyear">1ST YEAR</a></li>
-    </ul>
-    <div class="coins">
-      <span>100</span>
-      <img src="images/user.png" alt="User">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Doubt'O Clock</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: radial-gradient(#00000012 0.6px, transparent 0.7px) 0 0/3px 3px, {% block gradient %} {% endblock gradient %}
+      color: white;
+      text-align:center
+    }
+
+    /* Navbar */
+    .navbar .nav-link {
+      color: #ffffff !important;
+      font-weight: 300;
+      font-size: 24px;
+      font-family: 'Josefin Sans', sans-serif;
+      text-decoration: none;
+      transition: 0.2s ease-in-out;
+      margin-right:  100px;
+    }
+    
+    /* On hover → bold + stay white */
+    .navbar .nav-link:hover {
+      font-weight: bold;
+      color: #ffffff !important;
+      
+    }
+    
+    /* On active (current page) → bold + white */
+    .navbar .nav-link.active {
+      font-weight: bold;
+      color: #ffffff !important;
+    }
+    .bg-tr {
+      background-color:rgba(255, 255, 255, 0.15) !important;
+    }
+
+    .logo { font-weight: bold; font-size: 20px; letter-spacing: 1px; }
+
+    .coins { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+    .coins span { background: gold; padding: 5px 12px; border-radius: 20px; color: black; font-weight: bold; }
+    .coins img { width: 32px; border-radius: 50%; }
+
+    /* Footer */
+    footer { text-align: center; padding: 20px 10px; font-size: 14px; margin-top: auto; background-color:rgba(255, 255, 255, 0.15)}
+    footer a { color: #ddd; }
+
+    .profile-icon {
+      position: absolute;
+      top: 50%;
+      right: 80px;        /* distance from right edge */
+      transform: translateY(-50%); /* vertical centering */
+    }
+    
+    .profile-icon img {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    {% block styles %} {% endblock styles %}
+  </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-tr ">
+
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Doubt'O Clock</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/jeeneet">Jee/Neet</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/firstyear">First Year</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Profile icon outside collapse -->
+      <div class="profile-icon">
+        <a href = "profilepage">
+        <img src="static/profileout.png" alt="Profile">
+        </a>
+      </div>
     </div>
-  </div>
+  </nav>
+    {%block body%}{%endblock body%}
+    <!-- Footer -->
+  <footer>
+    <p>ABOUT US</p>
+    <p>Email : <a href="mailto:doubtoclock@gmail.com">doubtoclock@gmail.com</a></p>
+    <p><i><h4>For the student By the student</h4></i></p>
+  </footer>
+</body>
+</html>
