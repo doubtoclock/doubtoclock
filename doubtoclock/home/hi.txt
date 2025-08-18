@@ -1,0 +1,862 @@
+/* HOME */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 401.28px;
+isolation: isolate;
+
+width: 1440px;
+height: 2578px;
+
+background: rgba(44, 44, 45, 0.43);
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* BACKGROUND */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 10px;
+
+position: absolute;
+width: 1440px;
+height: 2578px;
+left: 0px;
+top: 0px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Group 23 */
+
+width: 1440px;
+height: 2578px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle 2 */
+
+position: absolute;
+width: 1440px;
+height: 859.33px;
+left: 0px;
+top: 0px;
+
+background: linear-gradient(180deg, #7843C6 0%, #3A2060 100%);
+
+
+/* Rectangle 5 */
+
+position: absolute;
+width: 1440px;
+height: 859.33px;
+left: 0px;
+top: 1718.67px;
+
+background: linear-gradient(180deg, #7843C6 0%, #3A2060 100%);
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 1440px;
+height: 859.33px;
+left: 0px;
+top: 859.33px;
+
+background: linear-gradient(180deg, #7843C6 0%, #3A2060 100%);
+transform: rotate(180deg);
+
+
+/* Header */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 10px;
+
+width: 1440px;
+height: 85px;
+
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Group 22 */
+
+width: 1440px;
+height: 85px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle 3 */
+
+position: absolute;
+width: 1440px;
+height: 80px;
+left: 0px;
+top: 5px;
+
+background: #D9D9D9;
+opacity: 0.15;
+
+
+/* pp logo 1 */
+
+position: absolute;
+width: 85px;
+height: 85px;
+right: 29px;
+top: 0px;
+
+background: url(pp logo.png);
+
+
+/* Coin */
+
+position: absolute;
+width: 49.79px;
+height: 43.18px;
+left: 1133px;
+top: 23px;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 1.46%;
+right: 1.46%;
+top: 1.46%;
+bottom: 1.46%;
+
+background: #FED402;
+
+
+/* Vector */
+
+position: absolute;
+left: 9.28%;
+right: 9.28%;
+top: 9.28%;
+bottom: 9.28%;
+
+background: #FAC600;
+
+
+/* Vector */
+
+position: absolute;
+left: 45.61%;
+right: 9.28%;
+top: 9.28%;
+bottom: 9.28%;
+
+background: #E8B800;
+
+
+/* Vector */
+
+position: absolute;
+left: 26.81%;
+right: 20.95%;
+top: 41.32%;
+bottom: 23.43%;
+
+background: #E8B800;
+
+
+/* Vector */
+
+position: absolute;
+left: 46.27%;
+right: 40.41%;
+top: 26.8%;
+bottom: 20.95%;
+
+background: #E8B800;
+
+
+/* Vector */
+
+position: absolute;
+left: 43.89%;
+right: 38.03%;
+top: 58.66%;
+bottom: 34.51%;
+
+background: #E8B800;
+
+
+/* Vector */
+
+position: absolute;
+left: 23.88%;
+right: 23.88%;
+top: 38.39%;
+bottom: 26.36%;
+
+background: #E8EDF2;
+
+
+/* Vector */
+
+position: absolute;
+left: 43.34%;
+right: 43.34%;
+top: 23.87%;
+bottom: 23.88%;
+
+background: #F5F8F9;
+
+
+/* Vector */
+
+position: absolute;
+left: 40.96%;
+right: 40.96%;
+top: 55.73%;
+bottom: 37.44%;
+
+background: #D9E7EC;
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 166px;
+height: 53.41px;
+right: 151px;
+top: 18px;
+
+background: #D9D9D9;
+opacity: 0.4;
+border-radius: 40px;
+
+
+/* doc logo 2 1 */
+
+position: absolute;
+width: 335px;
+height: 70px;
+right: 1105px;
+top: 10px;
+
+background: url(doc logo 2.png);
+
+
+/* 100 */
+
+position: absolute;
+width: 93.74px;
+height: 49.02px;
+right: 164.26px;
+top: 22px;
+
+font-family: 'Jomhuria';
+font-style: normal;
+font-weight: 400;
+font-size: 64px;
+line-height: 55px;
+/* or 86% */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* SEARCH TEXT */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 10px;
+
+width: 690px;
+height: 195.19px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+z-index: 2;
+
+
+/* Group 24 */
+
+width: 690px;
+height: 195.19px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle 5 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 690px;
+height: 79.19px;
+left: calc(50% - 690px/2);
+top: calc(50% - 79.19px/2 + 58px);
+
+background: linear-gradient(90deg, rgba(213, 127, 69, 0.8) 0%, #D57F45 100%);
+opacity: 0.8;
+border: 3px solid #000000;
+border-radius: 80px;
+
+
+/* Ask your doubt */
+
+position: absolute;
+width: 304px;
+height: 54px;
+left: 183px;
+top: 128px;
+
+font-family: 'GFS Neohellenic';
+font-style: normal;
+font-weight: 700;
+font-size: 44px;
+line-height: 55px;
+/* or 125% */
+text-align: center;
+letter-spacing: 0.05em;
+
+color: #FFFFFF;
+
+
+
+/* search icon 1 */
+
+position: absolute;
+width: 36.81px;
+height: 36.81px;
+left: 23.09px;
+top: 136.51px;
+
+background: url(search icon.png);
+
+
+/* ANY TIME ANY WHERE SOLVE YOUR DOUBT WITHOUT FEAR */
+
+position: absolute;
+width: 680px;
+height: 108.88px;
+left: calc(50% - 680px/2 - 5px);
+top: 0px;
+
+font-family: 'Jomhuria';
+font-style: normal;
+font-weight: 400;
+font-size: 80px;
+line-height: 55px;
+/* or 69% */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Tiles */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 32px;
+
+width: 1304.67px;
+height: 651px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+z-index: 3;
+
+
+/* JEE/NEET CARD GRP */
+
+width: 413.33px;
+height: 651px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* ChatGPT Image Aug 3, 2025, 08_50_01 PM 1 */
+
+position: absolute;
+left: 0%;
+right: 0.08%;
+top: 0.15%;
+bottom: 0%;
+
+background: url(ChatGPT Image Aug 3, 2025, 08_50_01 PM.png);
+border-radius: 50px;
+
+
+/* Rectangle 10 */
+
+position: absolute;
+left: 0%;
+right: 0.08%;
+top: 45.31%;
+bottom: 45.47%;
+
+background: #F0E3D1;
+
+
+/* Rectangle 6 */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0.15%;
+bottom: 0%;
+
+background: rgba(241, 74, 74, 0.6);
+box-shadow: 8px 8px 16px #7843C6;
+border-radius: 50px;
+
+
+/* JEE/NEET */
+
+position: absolute;
+left: 11.37%;
+right: 11.45%;
+top: 45.31%;
+bottom: 45.47%;
+
+font-family: 'GFS Neohellenic';
+font-style: normal;
+font-weight: 700;
+font-size: 64px;
+line-height: 55px;
+/* or 86% */
+text-align: center;
+letter-spacing: 0.05em;
+
+color: #000000;
+
+
+
+/* 1ST YEAR CARD GRP */
+
+width: 414px;
+height: 650px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* photo_2025-08-03_21-27-47 1 */
+
+position: absolute;
+width: 413px;
+height: 650px;
+left: 445.33px;
+top: 0.5px;
+
+background: url(photo_2025-08-03_21-27-47.jpg);
+border-radius: 50px;
+
+
+/* Rectangle 11 */
+
+position: absolute;
+width: 413px;
+height: 60px;
+left: 446.33px;
+top: 294.5px;
+
+background: #F0E3D1;
+
+
+/* Rectangle 8 */
+
+position: absolute;
+width: 413.33px;
+height: 650px;
+left: 445.66px;
+top: 0.5px;
+
+background: rgba(149, 241, 74, 0.6);
+box-shadow: 8px 8px 16px #7843C6;
+border-radius: 50px;
+
+
+/* 1ST YEAR */
+
+position: absolute;
+width: 308px;
+height: 60px;
+left: 499.33px;
+top: 295.5px;
+
+font-family: 'GFS Neohellenic';
+font-style: normal;
+font-weight: 700;
+font-size: 64px;
+line-height: 55px;
+/* or 86% */
+text-align: center;
+
+color: #000000;
+
+
+
+/* IMP QUE CARD GRP */
+
+width: 413.34px;
+height: 651px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* impq 1 */
+
+position: absolute;
+width: 413px;
+height: 650px;
+left: 891.67px;
+top: 1px;
+
+background: url(impq.jpg);
+border-radius: 50px;
+
+
+/* Rectangle 7 */
+
+position: absolute;
+width: 413.33px;
+height: 650px;
+left: 891.33px;
+top: 0px;
+
+background: rgba(74, 193, 241, 0.6);
+box-shadow: 8px 8px 16px #7843C6;
+border-radius: 50px;
+
+
+/* IMPORTANT QUESTIONS */
+
+position: absolute;
+width: 325px;
+height: 107px;
+left: 934.67px;
+top: 280px;
+
+font-family: 'GFS Neohellenic';
+font-style: normal;
+font-weight: 700;
+font-size: 55px;
+line-height: 55px;
+/* or 100% */
+text-align: center;
+
+color: #000000;
+
+
+
+/* Footer */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 10px;
+
+width: 1440px;
+height: 443px;
+
+filter: drop-shadow(0px -4px 4px rgba(0, 0, 0, 0.25));
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+z-index: 4;
+
+
+/* Group 25 */
+
+width: 1440px;
+height: 443px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle 11 */
+
+position: absolute;
+width: 1440px;
+height: 443px;
+left: 0px;
+top: 0px;
+
+background: #D9D9D9;
+opacity: 0.15;
+
+
+/* ABOUT US */
+
+position: absolute;
+width: 202px;
+height: 77.1px;
+left: 68px;
+top: 34.24px;
+
+font-family: 'Josefin Sans';
+font-style: normal;
+font-weight: 300;
+font-size: 40px;
+line-height: 55px;
+/* or 138% */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* email : doubtoclock@gmail.com */
+
+position: absolute;
+width: 536px;
+height: 77.1px;
+left: 452px;
+top: 139.38px;
+
+font-family: 'Josefin Sans';
+font-style: normal;
+font-weight: 300;
+font-size: 40px;
+line-height: 55px;
+/* or 138% */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* For the student By the student */
+
+position: absolute;
+width: 511px;
+height: 55px;
+left: 464px;
+top: 229.13px;
+
+font-family: 'Josefin Sans';
+font-style: normal;
+font-weight: 300;
+font-size: 40px;
+line-height: 55px;
+/* identical to box height, or 138% */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* HOME */
+
+position: absolute;
+width: 117px;
+height: 66px;
+right: 881px;
+top: 7px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+z-index: 5;
+
+
+/* Rectangle 9 */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+opacity: 0;
+
+
+/* HOME */
+
+position: absolute;
+left: 0%;
+right: 2.56%;
+top: 16.67%;
+bottom: 0%;
+
+font-family: 'Josefin Sans';
+font-style: normal;
+font-weight: 200;
+font-size: 36px;
+line-height: 55px;
+/* identical to box height, or 153% */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* JEE/NEET */
+
+position: absolute;
+width: 117px;
+height: 66px;
+right: 667px;
+top: 4px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+z-index: 6;
+
+
+/* Rectangle 9 */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+opacity: 0;
+
+
+/* JEE/NEET */
+
+position: absolute;
+left: -22.22%;
+right: -19.66%;
+top: 16.67%;
+bottom: 0%;
+
+font-family: 'Josefin Sans';
+font-style: normal;
+font-weight: 200;
+font-size: 36px;
+line-height: 55px;
+/* identical to box height, or 153% */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* 1ST YEAR */
+
+position: absolute;
+width: 117px;
+height: 66px;
+right: 453px;
+top: 5px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 7;
+flex-grow: 0;
+z-index: 7;
+
+
+/* Rectangle 9 */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+opacity: 0;
+
+
+/* 1ST YEAR */
+
+position: absolute;
+left: -18.8%;
+right: -16.24%;
+top: 16.67%;
+bottom: 0%;
+
+font-family: 'Josefin Sans';
+font-style: normal;
+font-weight: 200;
+font-size: 36px;
+line-height: 55px;
+/* identical to box height, or 153% */
+text-align: center;
+
+color: #FFFFFF;
+
