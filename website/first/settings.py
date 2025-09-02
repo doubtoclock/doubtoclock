@@ -74,10 +74,15 @@ WSGI_APPLICATION = 'first.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'defaultdb',      # database name
+        'USER': 'avnadmin',      # MySQL username
+        'PASSWORD': 'AVNS_anHrKmpqJossYrpafnv',  # MySQL password
+        'HOST': 'mysql-321cdf7-chinmaysabharwal123-4568.d.aivencloud.com',         # or your MySQL server IP
+        'PORT': '26742',              # default MySQL port
     }
 }
+
 
 
 # Password validation
