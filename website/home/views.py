@@ -1,5 +1,6 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
 def coins():
     return 69
@@ -32,3 +33,7 @@ def profilepage(request):
     return render(request, 'profilepage.html', context)
 def about(request):
     return HttpResponse("this is about page") 
+
+@login_required(login_url="login")   # If not logged in, redirect to login page
+def login(request):
+    return render(request, "profilepage.html")  # Your existing profile page

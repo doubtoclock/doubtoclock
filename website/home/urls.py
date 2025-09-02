@@ -9,5 +9,7 @@ urlpatterns = [
     path('firstyear', views.firstyear, name='firstyear'),
     path('impques', views.importantquestion, name='impques'),
     path('profilepage', views.profilepage, name = 'profilepage'),
-    path('about', views.about, name='about')
+    path('about', views.about, name='about'),
+    path('login', views.login, name="login")
+
 ]
