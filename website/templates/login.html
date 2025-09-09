@@ -26,6 +26,17 @@
 
           <!-- Submit Button -->
           <button type="submit" class="submit-btn">Login</button>
+          <h2>Login</h2>
+
+
+
+          <!-- Google Login -->
+          <a href="{% provider_login_url 'google' %}">
+              <button style="background:#4285F4; color:white; padding:10px; border:none; border-radius:5px;">
+                  <img src="https://developers.google.com/identity/images/g-logo.png" width="20" style="vertical-align:middle; margin-right:8px;">
+                  Login with Google
+              </button>
+          </a>
       </form>
       <p class="signup-text">Don’t Have an Account? <a href="#">Sign Up</a></p>
     </div>
