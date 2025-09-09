@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
 
 def coins():
     return 69
@@ -26,14 +27,25 @@ def importantquestion(request):
             'coins': coins(),
         }
     return render(request, 'impques.html', context)
+
+def about(request):
+    return HttpResponse("this is about page") 
+
+@login_required(login_url="login")   # If not logged in, redirect to login page
 def profilepage(request):
     context = {
             'coins': coins(),
         }
     return render(request, 'profilepage.html', context)
-def about(request):
-    return HttpResponse("this is about page") 
 
-@login_required(login_url="login")   # If not logged in, redirect to login page
-def login(request):
-    return render(request, "profilepage.html")  # Your existing profile page
+def login_view(request):
+    if request.method == "POST":
+        username=request.POST.get("username")
+        password=request.POST.get("password")
+        user=authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request,user)
+            return redirect('profilepage')
+        else:
+            return render(request,'login.html', {'error':'Invalid username or password'})
+    return render(request,"login.html")

@@ -124,3 +124,20 @@ body {
     width: 90%;
   }
 }
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background: #a3522a;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+
+}
+
+.submit-btn:hover{
+    background: #d76d39;
+}
