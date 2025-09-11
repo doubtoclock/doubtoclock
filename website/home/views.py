@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login
 def coins():
     return 69
 # Create your views here.
-@csrf_exempt  # Disable CSRF protection for this view (not recommended for production)
+
 def index(request):
     context = {
             'coins': coins(),
