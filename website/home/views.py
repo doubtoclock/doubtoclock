@@ -49,3 +49,14 @@ def login_view(request):
         else:
             return render(request,'login.html', {'error':'Invalid username or password'})
     return render(request,"login.html")
+
+def signup(request):
+    if request.method == "POST":
+        username=request.POST.get("username")
+        password=request.POST.get("password")
+        # TODO check and put in db
+        if username is not None and password is not None:
+            return redirect('profilepage')
+        else:
+            return render(request,'signup.html', {'error':'Invalid username or password'})
+    return render(request,"signup.html")

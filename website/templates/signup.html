@@ -6,13 +6,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
-  <link rel="stylesheet" href="{% static 'login.css' %}">
+  <link rel="stylesheet" href="{% static 'signup.css' %}">
 </head>
 <body>
   <div class="overlay">
     <div class="login-box">
+      <button class="back-btn" ><a href="login">&lt;</a></button>
       <button class="close-btn" ><a href="/ ">&times;</a></button>
-      <h2>LOGIN</h2>
+      <h2>SIGN UP</h2>
       <form method="POST" action="{% url 'login' %}">
           {% csrf_token %}
           <div class="input-group">
@@ -26,19 +27,8 @@
           </div>
 
           <!-- Submit Button -->
-          <button type="submit" class="submit-btn">Login</button>
+          <button type="submit" class="submit-btn">Sign up</button>
           
-
-
-
-          <!-- Google Login -->
-          <a href="{% provider_login_url 'google' %}"
-            style="display:inline-block; background:#4285F4; color:white; padding:10px 15px; margin: 25px;
-                    border-radius:5px; text-decoration:none; font-weight:bold;">
-            <img src="https://developers.google.com/identity/images/g-logo.png" width="20"
-                style="vertical-align:middle; margin-right:8px;">
-            Login with Google
-          </a>
       </form>
     </div>
   </div>

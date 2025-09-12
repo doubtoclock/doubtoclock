@@ -11,6 +11,10 @@ urlpatterns = [
     path('profilepage', views.profilepage, name = 'profilepage'),
     path('about', views.about, name='about'),
     path('login', views.login_view, name="login"),
+    path('signup', views.signup, name="signup"),
     path('accounts/',include('allauth.urls'))
 
 ]
+
+
+

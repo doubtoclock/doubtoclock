@@ -53,17 +53,28 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-LOGIN_REDIRECT_URL = ''   # where to go after login
+LOGIN_REDIRECT_URL = '/'   # where to go after login
 LOGOUT_REDIRECT_URL = '/'  # where to go after logout
 
-SOCIALACCOUNT_PROVIDERS={
-    'goggle': {
-        'APP': {
-            'client_id':"333696078031-s1mel092n3orcigegbepsnvf5qe3n51o.apps.googleusercontent.com",
-            'secret':'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',
-            'key':''
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = "email"
 
-        }
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': "333696078031-s1mel092n3orcigegbepsnvf5qe3n51o.apps.googleusercontent.com",
+            'secret': "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",
+            'key': ""
+        },
+        "SCOPE": [
+            "profile",
+            "email",
+        ],
+        "AUTH_PARAMS": {
+            "access_type": "online",
+        },
     }
 }
 
@@ -109,6 +120,9 @@ DATABASES = {
         'PASSWORD': 'AVNS_anHrKmpqJossYrpafnv',  # MySQL password
         'HOST': 'mysql-321cdf7-chinmaysabharwal123-4568.d.aivencloud.com',         # or your MySQL server IP
         'PORT': '26742',              # default MySQL port
+        "OPTIONS": {
+            "ssl": {"ca": str(BASE_DIR / "certs/ca.pem")}
+        }
     }
 }
 
