@@ -2,6 +2,8 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
+from .forms import CustomUserSignupForm   # import your form
+
 
 def coins():
     return 69
@@ -52,11 +54,13 @@ def login_view(request):
 
 def signup(request):
     if request.method == "POST":
-        username=request.POST.get("username")
-        password=request.POST.get("password")
-        # TODO check and put in db
-        if username is not None and password is not None:
-            return redirect('profilepage')
+        form = CustomUserSignupForm(request.POST)
+        if form.is_valid():
+            user = form.save()     
+            login(request, user, backend="django.contrib.auth.backends.ModelBackend")   
+            return redirect("login")
         else:
-            return render(request,'signup.html', {'error':'Invalid username or password'})
-    return render(request,"signup.html")
+            return render(request,'signup.html', {"form": form, 'error':form.errors})  # ✅ see validation errors in terminal 
+    else:
+        form = CustomUserSignupForm()
+    return render(request, "signup.html", {"form": form})
