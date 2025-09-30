@@ -1,3 +1,11 @@
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env
+load_dotenv()
+
+AIVEN_PASSWORD = os.getenv("AIVEN_PASSWORD")
+
 """
 Django settings for first project.
 
@@ -118,7 +126,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'defaultdb',      # database name
         'USER': 'avnadmin',      # MySQL username
-        'PASSWORD': 'AVNS_4S1IBMQLktD-A1mlnB9',  # MySQL password
+        'PASSWORD': AIVEN_PASSWORD,  # MySQL password
         'HOST': 'mysql-36f7ea44-chinmaysabharwal123-4568.l.aivencloud.com',         # or your MySQL server IP
         'PORT': '26742',              # default MySQL port
         "OPTIONS": {
