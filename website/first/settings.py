@@ -55,12 +55,11 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-LOGIN_REDIRECT_URL = '/'   # where to go after login
+LOGIN_REDIRECT_URL = 'profilepage'   # where to go after login
 LOGOUT_REDIRECT_URL = '/'  # where to go after logout
 
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+ACCOUNT_LOGIN_METHODS = {'email'}
 
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -119,8 +118,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'defaultdb',      # database name
         'USER': 'avnadmin',      # MySQL username
-        'PASSWORD': 'AVNS_anHrKmpqJossYrpafnv',  # MySQL password
-        'HOST': 'mysql-321cdf7-chinmaysabharwal123-4568.d.aivencloud.com',         # or your MySQL server IP
+        'PASSWORD': 'AVNS_4S1IBMQLktD-A1mlnB9',  # MySQL password
+        'HOST': 'mysql-36f7ea44-chinmaysabharwal123-4568.l.aivencloud.com',         # or your MySQL server IP
         'PORT': '26742',              # default MySQL port
         "OPTIONS": {
             "ssl": {"ca": str(BASE_DIR / "certs/ca.pem")}

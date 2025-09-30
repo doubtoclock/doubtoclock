@@ -2,7 +2,7 @@
 
 {% block gradient %} 
   radial-gradient(#00000012 0.6px, transparent 0.7px) 0 0/3px 3px, 
-  linear-gradient(180deg, #6b6670 0%, #5a555f 60%, #57515d 100%); 
+  linear-gradient(180deg,rgb(119, 70, 167) 0%,rgb(170, 144, 196) 60%,rgb(0, 0, 0) 100%); 
 {%endblock gradient%}
 
 {% block styles %}
@@ -136,8 +136,8 @@
     <div class = "profile-main">
       <img src="static/profileout.png" alt="Profile">
     </div>
-    <h1 class="username">AYUSH BKL</h1>
-    <p class="email">ayush@example.com</p>
+    <h1 class="username">{{ request.user.username }}</h1>
+    <p class="email">{{ request.user.email }}</p>
     <div class="profile-actions">
       <button class="chip-btn">Badge</button>
       <button class="chip-btn">Edit Profile</button>
