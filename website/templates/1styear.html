@@ -33,8 +33,7 @@
       box-shadow: 0 4px 6px rgba(0,0,0,0.2);
       cursor: pointer;
     }
-
-    .add-image {
+    #addImageBtn {
       background: #fff;
       color: black;
       padding: 10px 20px;
@@ -46,11 +45,6 @@
       font-weight: bold;
       cursor: pointer;
       box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    }
-
-    .add-image img {
-      width: 20px;
-      height: 20px;
     }
 
     /* Recently Asked Doubts */
@@ -82,12 +76,13 @@
   <div class="page-title">1ST YEAR</div>
 
   <!-- Ask Doubt Section -->
-  <div class="ask-doubt">
-    <div class="ask-box">ASK DOUBT</div>
-    <div class="add-image">
-      <img src="images/add-image.png" alt="Add Image"> ADD IMAGE
-    </div>
-  </div>
+   <div class="ask-doubt">
+      <div class="ask-box">ASK DOUBT</div>
+      <button id="addImageBtn">Add Image</button>
+   </div>  
+
+  <!-- Hidden file input (never shown to user) -->
+  <input type="file" id="hiddenFileInput" accept="image/*" style="display:none;">
 
   <!-- Recently Asked Doubts -->
   <div class="recent">
@@ -96,4 +91,32 @@
     <div class="question-card">Q</div>
     <div class="question-card">Q</div>
   </div>
+
+  <script>
+    document.getElementById("addImageBtn").addEventListener("click", function () {
+      // Trigger hidden file input
+      document.getElementById("hiddenFileInput").click();
+    });
+
+    document.getElementById("hiddenFileInput").addEventListener("change", async function (event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      // ---- Upload directly to Cloudinary ----
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "your_unsigned_preset"); // 👈 use your Cloudinary upload preset
+
+      let res = await fetch("https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/upload", {
+        method: "POST",
+        body: formData
+      });
+
+      let data = await res.json();
+      console.log("Uploaded image URL:", data.secure_url);
+
+      // You can also display the uploaded image if you want:
+      alert("Image uploaded successfully!");
+    });
+  </script>
 {% endblock body %}

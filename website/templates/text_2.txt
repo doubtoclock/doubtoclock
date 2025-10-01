@@ -1,0 +1,17 @@
+<!-- Title -->
+  <div class="page-title">JEE/NEET</div>
+  
+  <!-- Ask Doubt Section -->
+  <div class="ask-doubt">
+    <div class="ask-box">ASK DOUBT</div>
+    <button id="addImageBtn">Add Image</button>
+
+    
+
+  <!-- Recently Asked Doubts -->
+  <div class="recent">
+    <h2>RECENTLY ASKED DOUBT</h2>
+    <div class="question-card">Q</div>
+    <div class="question-card">Q</div>
+    <div class="question-card">Q</div>
+  </div>

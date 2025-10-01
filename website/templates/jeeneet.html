@@ -35,22 +35,6 @@
     }
 
     #addImageBtn {
-      flex: 1;
-      max-width: 500px;
-      background: #d3d3d3;
-      padding: 15px 20px;
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      color: black;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-      cursor: pointer;
-
-    }
-
-    .add-image {
       background: #fff;
       color: black;
       padding: 10px 20px;
@@ -62,11 +46,6 @@
       font-weight: bold;
       cursor: pointer;
       box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    }
-
-    .add-image img {
-      width: 20px;
-      height: 20px;
     }
 
     /* Recently Asked Doubts */
@@ -98,22 +77,13 @@
   <div class="page-title">JEE/NEET</div>
   
   <!-- Ask Doubt Section -->
-  <div class="ask-doubt">
-    <div class="ask-box">ASK DOUBT</div>
-    <button id="addImageBtn">Add Image</button>
+   <div class="ask-doubt">
+      <div class="ask-box">ASK DOUBT</div>
+      <button id="addImageBtn">Add Image</button>
+   </div>  
 
-    <!-- Image upload form hidden by default -->
-    <div id="imageForm" style="display:none; margin-top:20px;">
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <label for="id_image">Take Photo:</label>
-            <input type="file" name="image" accept="image/*" capture="environment" required>
-            
-            <input type="text" name="title" placeholder="Enter title" required>
-            <button type="submit">Upload</button>
-        </form>
-    </div>
-  </div>
+  <!-- Hidden file input (never shown to user) -->
+  <input type="file" id="hiddenFileInput" accept="image/*" style="display:none;">
 
   <!-- Recently Asked Doubts -->
   <div class="recent">
@@ -124,21 +94,30 @@
   </div>
 
   <script>
-    window.addEventListener("DOMContentLoaded", function() {
-        var formDiv = document.getElementById("imageForm");
-        var addImageBtn = document.getElementById("addImageBtn");
-    
-        // Check sessionStorage if form should be visible
-        if (sessionStorage.getItem("showImageForm") === "true") {
-            formDiv.style.display = "block";
-            sessionStorage.removeItem("showImageForm");
-        }
-    
-        addImageBtn.addEventListener("click", function() {
-            formDiv.style.display = "block";
-            document.querySelector("#imageForm input[type='file']").click();
-            sessionStorage.setItem("showImageForm", "true"); // remember state for page reload
-        });
+    document.getElementById("addImageBtn").addEventListener("click", function () {
+      // Trigger hidden file input
+      document.getElementById("hiddenFileInput").click();
     });
-    </script>
+
+    document.getElementById("hiddenFileInput").addEventListener("change", async function (event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      // ---- Upload directly to Cloudinary ----
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "your_unsigned_preset"); // 👈 use your Cloudinary upload preset
+
+      let res = await fetch("https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/upload", {
+        method: "POST",
+        body: formData
+      });
+
+      let data = await res.json();
+      console.log("Uploaded image URL:", data.secure_url);
+
+      // You can also display the uploaded image if you want:
+      alert("Image uploaded successfully!");
+    });
+  </script>
 {%endblock body%}
