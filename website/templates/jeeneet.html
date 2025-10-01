@@ -34,6 +34,22 @@
       cursor: pointer;
     }
 
+    #addImageBtn {
+      flex: 1;
+      max-width: 500px;
+      background: #d3d3d3;
+      padding: 15px 20px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: black;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      cursor: pointer;
+
+    }
+
     .add-image {
       background: #fff;
       color: black;
@@ -84,8 +100,18 @@
   <!-- Ask Doubt Section -->
   <div class="ask-doubt">
     <div class="ask-box">ASK DOUBT</div>
-    <div class="add-image">
-      <img src="images/add-image.png" alt="Add Image"> ADD IMAGE
+    <button id="addImageBtn">Add Image</button>
+
+    <!-- Image upload form hidden by default -->
+    <div id="imageForm" style="display:none; margin-top:20px;">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="id_image">Take Photo:</label>
+            <input type="file" name="image" accept="image/*" capture="environment" required>
+            
+            <input type="text" name="title" placeholder="Enter title" required>
+            <button type="submit">Upload</button>
+        </form>
     </div>
   </div>
 
@@ -96,4 +122,23 @@
     <div class="question-card">Q</div>
     <div class="question-card">Q</div>
   </div>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", function() {
+        var formDiv = document.getElementById("imageForm");
+        var addImageBtn = document.getElementById("addImageBtn");
+    
+        // Check sessionStorage if form should be visible
+        if (sessionStorage.getItem("showImageForm") === "true") {
+            formDiv.style.display = "block";
+            sessionStorage.removeItem("showImageForm");
+        }
+    
+        addImageBtn.addEventListener("click", function() {
+            formDiv.style.display = "block";
+            document.querySelector("#imageForm input[type='file']").click();
+            sessionStorage.setItem("showImageForm", "true"); // remember state for page reload
+        });
+    });
+    </script>
 {%endblock body%}

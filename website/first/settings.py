@@ -53,8 +53,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home.apps.HomeConfig',
+    'cloudinary',
+    'cloudinary_storage',
 ]
+
+CLOUDINARY_STORAGE={
+
+    'CLOUD_NAME':'doqajnknv',
+    'API_KEY':'859327147426414',
+    'API_SECRET':'O4ccHkRJE1qgx_2q7Bg0xHDUwes',
+}
+
+DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
 SITE_ID=2
+
 
 SOCIALACCOUNT_LOGIN_ON_GET = True
 
