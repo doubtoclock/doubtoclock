@@ -125,8 +125,11 @@
       <!-- Coin icon just before profile -->
       <div class="coin-icon">
         <img src="static/coin.png" alt="Coins">
-        <span>{{coins}}</span> <!-- Example count -->
+        <span>{{coins}}</span> 
       </div>
+      {% if user.is_authenticated %}
+        <a href="{% url 'account_logout' %}">Logout</a>
+      {% endif %}
       <!-- Profile icon -->
       <div class="profile-icon">
         <a href="{% url 'login' %}">
