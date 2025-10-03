@@ -15,3 +15,12 @@ class UserImage(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Doubt(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="doubts")
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def _str_(self):
+        return f"Doubt by {self.user.username} at {self.created_at}"    

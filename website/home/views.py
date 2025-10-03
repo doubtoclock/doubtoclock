@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
-from .forms import CustomUserSignupForm, ImageUploadForm   # import your form
+from .forms import CustomUserSignupForm, ImageUploadForm, DoubtForm   # import your form
 from .models import DoubtCoinWallet, UserImage # import the coinwallet
 
 
@@ -85,3 +85,15 @@ def upload_image(request):
 def gallery(request):
     images = UserImage.objects.all()
     return render(request, "gallery.html", {"images": images})    
+
+def ask_doubt(request):
+    if request.method == "POST":
+        form = DoubtForm(request.POST)
+        if form.is_valid():
+            doubt = form.save(commit=False)
+            doubt.user = request.user  # link doubt with logged-in user
+            doubt.save()
+            return redirect('home')
+    else:
+        form = DoubtForm()
+    return render(request, 'ask_doubt.html', {'form': form})
