@@ -132,10 +132,11 @@
 {% endblock styles %}
 
 {% block body %}
+{% load static %}
   <!-- PROFILE HEADER -->
   <section class="profile">
     <div class = "profile-main">
-      <img src="static/profileout.png" alt="Profile">
+      <img src="{% static request.user.profile.random_number|stringformat:'s' %}.jpeg" alt="Profile">
     </div>
     <h1 class="username">{{ request.user.username }}</h1>
     <p class="email">{{ request.user.email }}</p>

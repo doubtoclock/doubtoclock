@@ -97,3 +97,5 @@ def ask_doubt(request):
     else:
         form = DoubtForm()
     return render(request, 'ask_doubt.html', {'form': form})
+
+# TODO Make an about page
