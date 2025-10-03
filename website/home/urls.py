@@ -15,7 +15,7 @@ urlpatterns = [
     path('signup', views.signup, name="signup"),
 
     # ✅ Edited: added next_page so logout redirects instead of white screen
-    path("accounts/logout/", LogoutView.as_view(next_page="/"), name="account_logout"),
+    # path("accounts/logout/", LogoutView.as_view(next_page="/"), name="account_logout"),
 
     path('accounts/', include('allauth.urls')),
 ]

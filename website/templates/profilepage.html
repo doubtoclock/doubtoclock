@@ -79,6 +79,7 @@
     border-radius: 999px;
     cursor: pointer;
     box-shadow: 0 8px 18px rgba(0,0,0,.28);
+    text-decoration: none;
   }
   .chip-btn:hover { filter: brightness(1.05); transform: translateY(-1px); }
   .chip-btn:active { transform: translateY(0); }
@@ -141,7 +142,7 @@
     <div class="profile-actions">
       <button class="chip-btn">Badge</button>
       <button class="chip-btn">Edit Profile</button>
-      <button class="chip-btn">Log Out :(</button>
+      <a href="{% url 'account_logout' %}" class="chip-btn">Log Out :(</a>
     </div>
   </section>
 
