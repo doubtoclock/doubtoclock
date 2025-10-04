@@ -84,6 +84,9 @@
   .chip-btn:hover { filter: brightness(1.05); transform: translateY(-1px); }
   .chip-btn:active { transform: translateY(0); }
 
+  .choose-pic:hover { filter: brightness(1.05); transform: translateY(-1px); }
+  .choose-pic:active { transform: translateY(0); }
+
   /* ---------- "My Doubts" block ---------- */
   .doubts {
     width: min(92%, 1100px);
@@ -136,13 +139,20 @@
   <!-- PROFILE HEADER -->
   <section class="profile">
     <div class = "profile-main">
-      <img src="{% static request.user.profile.random_number|stringformat:'s' %}.jpeg" alt="Profile">
+      <img src="static/1.jpeg" alt="Profile" class="choose-pic">
+      <img src="static/2.jpeg" alt="Profile">
+      <img src="static/3.jpeg" alt="Profile">
+      <img src="static/4.jpeg" alt="Profile"><br><br>
+      <img src="static/5.jpeg" alt="Profile">
+      <img src="static/6.jpeg" alt="Profile">
+      <img src="static/7.jpeg" alt="Profile">
+      <img src="static/8.jpeg" alt="Profile">
     </div>
     <h1 class="username">{{ request.user.username }}</h1>
     <p class="email">{{ request.user.email }}</p>
     <div class="profile-actions">
       <button class="chip-btn">Badge</button>
-      <a href="{% url 'editprofile' %}" class="chip-btn">Edit Profile</a>
+      <button class="chip-btn">Edit Profile</button>
       <a href="{% url 'account_logout' %}" class="chip-btn">Log Out :(</a>
     </div>
   </section>

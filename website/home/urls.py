@@ -10,6 +10,7 @@ urlpatterns = [
     path('firstyear', views.firstyear, name='firstyear'),
     path('impques', views.importantquestion, name='impques'),
     path('profilepage', views.profilepage, name='profilepage'),
+    path('editprofile', views.editprofile, name='editprofile'),
     path('about', views.about, name='about'),
     path('login', views.login_view, name="login"),
     path('signup', views.signup, name="signup"),

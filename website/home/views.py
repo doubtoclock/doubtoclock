@@ -99,3 +99,10 @@ def ask_doubt(request):
     else:
         form = DoubtForm()
     return render(request, 'ask_doubt.html', {'form': form})
+
+@login_required(login_url='login')
+def editprofile(request):
+    context = {
+            'coins': coins(request.user),
+        }
+    return render(request, 'editprofile.html', context)
