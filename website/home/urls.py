@@ -13,9 +13,6 @@ urlpatterns = [
     path('about', views.about, name='about'),
     path('login', views.login_view, name="login"),
     path('signup', views.signup, name="signup"),
-
-    # ✅ Edited: added next_page so logout redirects instead of white screen
-    # path("accounts/logout/", LogoutView.as_view(next_page="/"), name="account_logout"),
-
+    path('ask-doubt/', views.ask_doubt, name='ask_doubt'),
     path('accounts/', include('allauth.urls')),
 ]

@@ -97,22 +97,61 @@
     }
     .important > * { position: relative; z-index: 1; }
 
+    #chatBox{
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      padding: 20px;
+      width: 400px;
+      z-index: 1000;
+    }
+
     /* Footer */
     footer { text-align: center; padding: 20px 10px; font-size: 14px; margin-top: auto; }
     footer a { color: #ddd; }
 {% endblock styles %}
 
-{%block body%}
-  <!-- Hero -->
-  <div class="hero">
-    <h1>ANY TIME ANY WHERE<br>SOLVE YOUR DOUBT WITHOUT FEAR</h1>
-    <div class="search-box">Ask your doubt</div>
-  </div>
+{% block body %}
+<!-- Hero Section -->
+<div class="hero">
+  <h1>ANY TIME ANY WHERE<br>SOLVE YOUR DOUBT WITHOUT FEAR!</h1>
+  <!-- Ask Doubt Button -->
+  <div class="search-box" onclick="openChatBox()">Ask your doubt</div>
+</div>
 
-  <!-- Cards -->
-  <div class="cards">
-    <a href="/jeeneet" class="card jee">JEE/NEET</a>
-    <a href="/firstyear" class="card first-year">1ST YEAR</a>
-    <a href="/impques" class="card important">IMPORTANT <br>QUESTIONS</a>
-  </div>
-{%endblock body%}
+<!-- Cards -->
+<div class="cards">
+  <a href="/jeeneet" class="card jee">JEE/NEET</a>
+  <a href="/firstyear" class="card first-year">1ST YEAR</a>
+  <a href="/impques" class="card important">IMPORTANT <br>QUESTIONS</a>
+</div>
+
+<!-- Hidden Chatbox -->
+<div id="chatBox" 
+     style="display:none; position:fixed; bottom:20px; right:20px; width:320px; background:#fff; border:1px solid #ccc; padding:15px; border-radius:10px; box-shadow:0px 0px 10px rgba(0,0,0,0.2); z-index:1000;">
+    
+    <h4>Ask Your Doubt</h4>
+    <form method="POST" action="{% url 'ask_doubt' %}">
+        {% csrf_token %}
+        <textarea name="text" rows="4" placeholder="Type your doubt here..." style="width:100%; padding:8px; border-radius:5px; border:1px solid #ccc;"></textarea>
+        <br><br>
+        <button type="submit" style="background-color:#4CAF50; color:white; border:none; padding:8px 12px; border-radius:5px;">Submit</button>
+        <button type="button" onclick="closeChatBox()" style="background-color:#f44336; color:white; border:none; padding:8px 12px; border-radius:5px;">Close</button>
+    </form>
+</div>
+
+<script>
+function openChatBox() {
+  document.getElementById("chatBox").style.display = "block";
+}
+
+function closeChatBox() {
+  document.getElementById("chatBox").style.display = "none";
+}
+</script>
+{% endblock body %}
