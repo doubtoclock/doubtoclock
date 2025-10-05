@@ -114,7 +114,7 @@
         <div class="popup-content">
           <span id="closePopup" class="close-btn">&times;</span>
           <h2>Ask Your Doubt</h2>
-          <form id="doubtForm" method="POST" action="{% url 'ask_doubt' %}">
+          <form id="doubtForm" method="POST" action="{% url 'ask_doubt_jn' %}">
             {% csrf_token %}
             <textarea name="doubt_text" rows="5" placeholder="Type your doubt here..." required></textarea>
             <br>

@@ -61,8 +61,8 @@ INSTALLED_APPS = [
 CLOUDINARY_STORAGE={
 
     'CLOUD_NAME':'doqajnknv',
-    'API_KEY':'859327147426414',
-    'API_SECRET':'O4ccHkRJE1qgx_2q7Bg0xHDUwes',
+    'API_KEY':'628619454961221',
+    'API_SECRET':'fQxxb_Bj31dHJGBBo848uyfY4Jw',
 }
 
 DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'

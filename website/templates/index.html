@@ -121,7 +121,7 @@
 <div class="hero">
   <h1>ANY TIME ANY WHERE<br>SOLVE YOUR DOUBT WITHOUT FEAR!</h1>
   <!-- Ask Doubt Button -->
-  <div class="search-box" onclick="openChatBox()">Ask your doubt</div>
+  <!-- <div class="search-box" onclick="openChatBox()">Ask your doubt</div> -->
 </div>
 
 <!-- Cards -->
@@ -136,7 +136,7 @@
      style="display:none; position:fixed; bottom:20px; right:20px; width:320px; background:#fff; border:1px solid #ccc; padding:15px; border-radius:10px; box-shadow:0px 0px 10px rgba(0,0,0,0.2); z-index:1000;">
     
     <h4>Ask Your Doubt</h4>
-    <form method="POST" action="{% url 'ask_doubt' %}">
+    <form method="POST" action="{% url 'ask_doubt_jn' %}">
         {% csrf_token %}
         <textarea name="text" rows="4" placeholder="Type your doubt here..." style="width:100%; padding:8px; border-radius:5px; border:1px solid #ccc;"></textarea>
         <br><br>

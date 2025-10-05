@@ -18,7 +18,7 @@ class UserImage(models.Model):
         return self.title
 
 
-class Doubt(models.Model):
+class Doubt_jn(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="doubts")
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)

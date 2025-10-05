@@ -2,8 +2,10 @@ from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
-from .forms import CustomUserSignupForm, ImageUploadForm, DoubtForm   # import your form
-from .models import DoubtCoinWallet, UserImage, Doubt # import the coinwallet
+from .forms import CustomUserSignupForm, ImageUploadForm, DoubtForm_jn   # import your form
+from .models import DoubtCoinWallet, UserImage, Doubt_jn # import the coinwallet
+from django.http import JsonResponse
+
 
 
 def coins(user):
@@ -70,35 +72,32 @@ def signup(request):
         form = CustomUserSignupForm()
     return render(request, "signup.html", {"form": form})
 
-
-
 def upload_image(request):
-    if request.method == "POST":
-        form = ImageUploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()  # Image is uploaded to Cloudinary, URL saved in MySQL
-            return redirect("gallery")
-    else:
-        form = ImageUploadForm()
-    return render(request, "upload.html", {"form": form})
+    if request.method == "POST" and request.FILES.get("image"):
+        img = request.FILES["image"]
+        title = request.POST.get("title", img.name)
+        obj = UserImage.objects.create(title=title, image=img)  # saves to Cloudinary
+        return JsonResponse({"url": obj.image.url})
+    return JsonResponse({"error": "No file uploaded"}, status=400)
 
+    
 def gallery(request):
     images = UserImage.objects.all()
     return render(request, "gallery.html", {"images": images})    
 
 
 @login_required(login_url='login')  # redirect to your login page if not logged in
-def ask_doubt(request):
+def ask_doubt_jn(request):
     if request.method == "POST":
-        form = DoubtForm(request.POST)
+        form = DoubtForm_jn(request.POST)
         if form.is_valid():
             doubt = form.save(commit=False)
-            doubt.user = request.user  # link with logged-in user
+            doubt.user = request.user
             doubt.save()
             return redirect('home')
     else:
-        form = DoubtForm()
-    return render(request, 'ask_doubt.html', {'form': form})
+        form = DoubtForm_jn()
+    return render(request, 'index.html', {'form': form})
 
 @login_required(login_url='login')
 def editprofile(request):

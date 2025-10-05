@@ -2,134 +2,48 @@
 
 {% block gradient %}linear-gradient(to bottom, #e08bb7, #5c2e86);{%endblock gradient%}
 
-{%block styles%}
-    /* Page Title */
-    .page-title {
-      font-size: 40px;
-      font-weight: bold;
-      margin: 40px 0 20px 0;
-    }
+{% block styles %}
+    /* Keep all your existing CSS */
+    .page-title { font-size: 40px; font-weight: bold; margin: 40px 0 20px 0; }
+    .ask-box { flex:1; max-width:500px; background:#d3d3d3; padding:15px 20px; border-radius:30px; display:flex; align-items:center; justify-content:center; font-weight:bold; color:black; box-shadow:0 4px 6px rgba(0,0,0,0.2); cursor:pointer; }
+    #addImageBtn { background:#fff; color:black; padding:10px 20px; border-radius:25px; display:flex; align-items:center; gap:8px; font-size:14px; font-weight:bold; cursor:pointer; box-shadow:0 4px 6px rgba(0,0,0,0.3); }
+    .recent { text-align:left; margin:40px auto; width:90%; max-width:700px; }
+    .recent h2 { font-size:18px; margin-bottom:20px; }
+    .question-card { background: rgba(255,255,255,0.2); padding:20px; border-radius:15px; margin-bottom:20px; font-size:16px; color:white; box-shadow:0 4px 6px rgba(0,0,0,0.2); }
+    #chatBox{ position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; border:2px solid #ddd; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.2); padding:20px; width:400px; z-index:1000; }
+    .search-box { background:rgb(44, 29, 37); padding:12px 20px; border-radius:25px; width:250px; margin:20px auto; color:white; font-weight:bold; cursor:pointer; text-align:center; transition: transform 0.1s ease-in; }
+    .search-box:hover { transform: scale(1.05); }
+    .buttons { display:flex; justify-content:center; align-items:center; gap:15px; margin:20px auto; }
+    @media (max-width:480px){ .buttons { flex-direction:column; gap:10px; } }
+{% endblock styles %}
 
-    /* Ask Doubt Section */
-    .ask-doubt {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      margin: 20px auto;
-    }
-
-    .ask-box {
-      flex: 1;
-      max-width: 500px;
-      background: #d3d3d3;
-      padding: 15px 20px;
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      color: black;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-      cursor: pointer;
-    }
-
-    #addImageBtn {
-      background: #fff;
-      color: black;
-      padding: 10px 20px;
-      border-radius: 25px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    }
-
-    /* Recently Asked Doubts */
-    .recent {
-      text-align: left;
-      margin: 40px auto;
-      width: 90%;
-      max-width: 700px;
-    }
-
-    .recent h2 {
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-
-    .question-card {
-      background: rgba(255,255,255,0.2);
-      padding: 20px;
-      border-radius: 15px;
-      margin-bottom: 20px;
-      font-size: 16px;
-      color: white;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    }
-
-    .doubt-popup {
-  display: none; /* hidden initially */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1000;
-}
-
-.popup-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  width: 400px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
-}
-
-.close-btn {
-  position: absolute;
-  right: 15px;
-  top: 10px;
-  font-size: 20px;
-  cursor: pointer;
-}
-{%endblock styles%}
-
-{%block body%}
-  <!-- Title -->
+{% block body %}
   <div class="page-title">JEE/NEET</div>
-  
-  <!-- Ask Doubt Section -->
-   <div class="ask-doubt">
-      <div class="ask-box">ASK DOUBT</div>
-      <!-- Doubt Chat Box Popup (hidden by default) -->
-      <div id="doubtPopup" class="doubt-popup">
-        <div class="popup-content">
-          <span id="closePopup" class="close-btn">&times;</span>
-          <h2>Ask Your Doubt</h2>
-          <form id="doubtForm" method="POST" action="{% url 'ask_doubt' %}">
-            {% csrf_token %}
-            <textarea name="doubt_text" rows="5" placeholder="Type your doubt here..." required></textarea>
-            <br>
-            <button type="submit">Submit</button>
-          </form>
-        </div>
-      </div>
-      <button id="addImageBtn">Add Image</button>
-   </div>  
 
-  <!-- Hidden file input (never shown to user) -->
-  <input type="file" id="hiddenFileInput" accept="image/*" style="display:none;">
+  <div class="buttons">
+    <div class="search-box" onclick="openChatBox()">Ask your doubt</div>
+    <button id="addImageBtn">Add Image</button>
+  </div>
 
-  <!-- Recently Asked Doubts -->
+  <!-- Hidden Chatbox -->
+  <div id="chatBox" style="display:none;">
+    <h4>Ask Your Doubt</h4>
+    <form method="POST" action="{% url 'ask_doubt_jn' %}">
+      {% csrf_token %}
+      <textarea name="text" rows="4" placeholder="Type your doubt here..." style="width:100%; padding:8px; border-radius:5px; border:1px solid #ccc;"></textarea>
+      <br><br>
+      <button type="submit" style="background-color:#4CAF50; color:white; border:none; padding:8px 12px; border-radius:5px;">Submit</button>
+      <button type="button" onclick="closeChatBox()" style="background-color:#f44336; color:white; border:none; padding:8px 12px; border-radius:5px;">Close</button>
+    </form>
+  </div>
+
+  <!-- Hidden file input -->
+  <form id="imageUploadForm" method="POST" enctype="multipart/form-data" style="display:none;">
+      {% csrf_token %}
+      <input type="file" name="image" id="hiddenFileInput" accept="image/*">
+      <input type="text" name="title" value="User Image">
+  </form>
+
   <div class="recent">
     <h2>RECENTLY ASKED DOUBT</h2>
     <div class="question-card">Q</div>
@@ -138,54 +52,39 @@
   </div>
 
   <script>
-    document.getElementById("addImageBtn").addEventListener("click", function () {
-      // Trigger hidden file input
-      document.getElementById("hiddenFileInput").click();
-    });
+    // Chatbox functions
+    function openChatBox(){ document.getElementById("chatBox").style.display="block"; }
+    function closeChatBox(){ document.getElementById("chatBox").style.display="none"; }
 
-    document.getElementById("hiddenFileInput").addEventListener("change", async function (event) {
-      const file = event.target.files[0];
-      if (!file) return;
+    // Add Image button
+    const addImageBtn = document.getElementById("addImageBtn");
+    const hiddenInput = document.getElementById("hiddenFileInput");
+    const imageForm = document.getElementById("imageUploadForm");
 
-      // ---- Upload directly to Cloudinary ----
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", "your_unsigned_preset"); // 👈 use your Cloudinary upload preset
+    addImageBtn.addEventListener("click", () => hiddenInput.click());
 
-      let res = await fetch("https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/upload", {
-        method: "POST",
-        body: formData
-      });
+    hiddenInput.addEventListener("change", () => {
+        if(hiddenInput.files.length > 0){
+            const formData = new FormData(imageForm);
 
-      let data = await res.json();
-      console.log("Uploaded image URL:", data.secure_url);
-
-      // You can also display the uploaded image if you want:
-      alert("Image uploaded successfully!");
+            fetch("{% url 'upload_image' %}", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}",
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.url){
+                    alert("Image uploaded successfully!");
+                    hiddenInput.value = "";  // reset input
+                } else {
+                    alert("Upload failed!");
+                }
+            })
+            .catch(() => alert("Upload failed!"));
+        }
     });
   </script>
-
-  <script>
-  // Get elements
-  const askBtn = document.querySelector(".ask-box");
-  const popup = document.getElementById("doubtPopup");
-  const closePopup = document.getElementById("closePopup");
-
-  // Show popup when clicking "ASK DOUBT"
-  askBtn.addEventListener("click", () => {
-    popup.style.display = "block";
-  });
-
-  // Hide popup when clicking close (×)
-  closePopup.addEventListener("click", () => {
-    popup.style.display = "none";
-  });
-
-  // Hide popup if clicking outside the box
-  window.addEventListener("click", (e) => {
-    if (e.target === popup) {
-      popup.style.display = "none";
-    }
-  });
-</script>
-{%endblock body%}
+{% endblock body %}
