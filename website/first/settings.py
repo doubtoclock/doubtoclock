@@ -21,6 +21,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 from django.urls import reverse_lazy
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -57,6 +60,12 @@ INSTALLED_APPS = [
     'cloudinary',
     'cloudinary_storage',
 ]
+
+cloudinary.config(
+    cloud_name='doqajnknv',
+    api_key='628619454961221',
+    api_secret='fQxxb_Bj31dHJGBBo848uyfY4Jw',
+)
 
 CLOUDINARY_STORAGE={
 

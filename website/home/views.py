@@ -78,14 +78,15 @@ def signup(request):
         form = CustomUserSignupForm()
     return render(request, "signup.html", {"form": form})
 
+@csrf_exempt
 def upload_image(request):
     if request.method == "POST" and request.FILES.get("image"):
         img = request.FILES["image"]
         title = request.POST.get("title", img.name)
-        obj = UserImage.objects.create(title=title, image=img)  # saves to Cloudinary
+        obj = UserImage(title=title, image=img)
+        obj.save()  # important — triggers Cloudinary upload
         return JsonResponse({"url": obj.image.url})
     return JsonResponse({"error": "No file uploaded"}, status=400)
-
     
 def gallery(request):
     images = UserImage.objects.all()

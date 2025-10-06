@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import random
+from cloudinary.models import CloudinaryField
 
 class DoubtCoinWallet(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="wallet")
@@ -9,14 +10,14 @@ class DoubtCoinWallet(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.balance} Doubtcoins"
 
-
 class UserImage(models.Model):
     title = models.CharField(max_length=100)
-    image = models.ImageField(upload_to="user_images/")  # goes to Cloudinary
+    image = CloudinaryField('image')  # ✅ Directly uploads to Cloudinary
+    uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
-
+    
 
 class Doubt_jn(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="doubts_jn")
