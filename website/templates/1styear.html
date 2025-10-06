@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block gradient %}linear-gradient(to bottom, #7bb064,rgb(70, 105, 55)) ;{%endblock gradient%}
+{% block gradient %}linear-gradient(to bottom,rgb(141, 204, 115),rgb(48, 72, 38)) ;{% endblock gradient %}
 
 {% block styles %}
     /* Page Title */
@@ -69,37 +69,40 @@
       color: white;
       box-shadow: 0 4px 6px rgba(0,0,0,0.2);
     }
-  
-  .doubt-popup {
-  display: none; /* hidden initially */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1000;
-}
 
-.popup-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  width: 400px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
-}
+    .search-box { 
+      background:rgba(0, 0, 0, 0.7);
+      padding:12px 20px; 
+      border-radius:25px; 
+      width:250px; 
+      margin:20px auto; 
+      color:white; 
+      font-weight:bold; 
+      cursor:pointer; 
+      text-align:center; 
+      transition: transform 0.1s ease-in; 
+    }
 
-.close-btn {
-  position: absolute;
-  right: 15px;
-  top: 10px;
-  font-size: 20px;
-  cursor: pointer;
-}
+    .search-box:hover { transform: scale(1.05); }
+
+    #chatBox {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      padding: 20px;
+      width: 400px;
+      z-index: 1000;
+      display: none;
+    }
+
+    .buttons { display:flex; justify-content:center; align-items:center; gap:15px; margin:20px auto; }
+
+    @media (max-width:480px){ .buttons { flex-direction:column; gap:10px; } }
 {% endblock styles %}
 
 {% block body %}
@@ -107,35 +110,42 @@
   <div class="page-title">1ST YEAR</div>
 
   <!-- Ask Doubt Section -->
-   <div class="ask-doubt">
-      <div class="ask-box">ASK DOUBT</div>
-      <!-- Doubt Chat Box Popup (hidden by default) -->
-      <div id="doubtPopup" class="doubt-popup">
-        <div class="popup-content">
-          <span id="closePopup" class="close-btn">&times;</span>
-          <h2>Ask Your Doubt</h2>
-          <form id="doubtForm" method="POST" action="{% url 'ask_doubt_jn' %}">
-            {% csrf_token %}
-            <textarea name="doubt_text" rows="5" placeholder="Type your doubt here..." required></textarea>
-            <br>
-            <button type="submit">Submit</button>
-          </form>
-        </div>
-      </div>
-      <button id="addImageBtn">Add Image</button>
-   </div>  
-
-  <!-- Hidden file input (never shown to user) -->
-  <input type="file" id="hiddenFileInput" accept="image/*" style="display:none;">
-
-  <!-- Recently Asked Doubts -->
-  <div class="recent">
-    <h2>RECENTLY ASKED DOUBT</h2>
-    <div class="question-card">Q</div>
-    <div class="question-card">Q</div>
-    <div class="question-card">Q</div>
+  <div class="buttons">
+    <div class="search-box" onclick="openChatBox()">Ask your doubt</div>
+    <button id="addImageBtn">Add Image</button>
   </div>
 
+  <!-- Hidden Chatbox -->
+  <div id="chatBox" style="display:none;">
+    <h4>Ask Your Doubt</h4>
+    <form method="POST" action="{% url 'ask_doubt_fy' %}">
+      {% csrf_token %}
+      <textarea name="text" rows="4" placeholder="Type your doubt here..." style="width:100%; padding:8px; border-radius:5px; border:1px solid #ccc;"></textarea>
+      <br><br>
+      <button type="submit" style="background-color:#4CAF50; color:white; border:none; padding:8px 12px; border-radius:5px;">Submit</button>
+      <button type="button" onclick="closeChatBox()" style="background-color:#f44336; color:white; border:none; padding:8px 12px; border-radius:5px;">Close</button>
+    </form>
+  </div>
+
+  <!-- Hidden file input (UNCHANGED) -->
+  <form id="imageUploadForm" method="POST" enctype="multipart/form-data" style="display:none;">
+      {% csrf_token %}
+      <input type="file" name="image" id="hiddenFileInput" accept="image/*">
+      <input type="text" name="title" value="User Image">
+  </form>
+
+  <div class="recent">
+    <h2>RECENTLY ASKED DOUBTS</h2>
+    {% for doubt in doubts %}
+        <div class="question-card">
+            <strong>{{ doubt.user.username }}</strong>: {{ doubt.text }}
+        </div>
+    {% empty %}
+        <p>No doubts asked yet.</p>
+    {% endfor %}
+  </div>
+
+  <!-- UNCHANGED IMAGE UPLOAD SCRIPT -->
   <script>
     document.getElementById("addImageBtn").addEventListener("click", function () {
       // Trigger hidden file input
@@ -164,27 +174,13 @@
     });
   </script>
 
+  <!-- ONLY Ask Doubt popup scripts -->
   <script>
-  // Get elements
-  const askBtn = document.querySelector(".ask-box");
-  const popup = document.getElementById("doubtPopup");
-  const closePopup = document.getElementById("closePopup");
-
-  // Show popup when clicking "ASK DOUBT"
-  askBtn.addEventListener("click", () => {
-    popup.style.display = "block";
-  });
-
-  // Hide popup when clicking close (×)
-  closePopup.addEventListener("click", () => {
-    popup.style.display = "none";
-  });
-
-  // Hide popup if clicking outside the box
-  window.addEventListener("click", (e) => {
-    if (e.target === popup) {
-      popup.style.display = "none";
+    function openChatBox() {
+      document.getElementById("chatBox").style.display = "block";
     }
-  });
+    function closeChatBox() {
+      document.getElementById("chatBox").style.display = "none";
+    }
   </script>
 {% endblock body %}

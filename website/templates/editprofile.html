@@ -2,153 +2,205 @@
 
 {% block gradient %} 
   radial-gradient(#00000012 0.6px, transparent 0.7px) 0 0/3px 3px, 
-  linear-gradient(180deg,rgb(119, 70, 167) 0%,rgb(170, 144, 196) 60%,rgb(0, 0, 0) 100%); 
-{%endblock gradient%}
+  linear-gradient(180deg, rgb(119, 70, 167) 0%, rgb(170, 144, 196) 60%, rgb(0, 0, 0) 100%); 
+{% endblock gradient %}
 
 {% block styles %}
-  .logo {
-    justify-self: start;
-    font-weight: 800;
-    letter-spacing: 1px;
-    color: #e2d6ff;
-    text-shadow: 0 1px 0 rgba(0,0,0,.35);
-    font-size: 20px;
-  }
+.logo {
+  justify-self: start;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #e2d6ff;
+  text-shadow: 0 1px 0 rgba(0,0,0,.35);
+  font-size: 20px;
+}
 
-  .actions {
-    justify-self: end;
-    display: flex; align-items: center; gap: 10px;
-  }
+.actions {
+  justify-self: end;
+  display: flex; align-items: center; gap: 10px;
+}
 
-  .coins {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: #5f4aa3;
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 999px;
-    box-shadow: inset 0 0 0 1px #7f6bc7, 0 2px 6px rgba(0,0,0,.25);
-    font-weight: 700;
-  }
-  .coin {
-    width: 20px; height: 20px; border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #fff8b8, #ffd34e 60%, #e3a600 100%);
-    box-shadow: inset 0 0 0 1px #f2e28f;
-    display: inline-block;
-  }
-  .avatar-btn {
-    width: 34px; height: 34px; border-radius: 50%;
-    border: 2px solid #c8bfff66;
-    background: linear-gradient(135deg, #8bb5ff, #2e63ff);
-    box-shadow: 0 2px 6px rgba(0,0,0,.35);
-    display: grid; place-items: center;
-    cursor: pointer;
-  }
-  .avatar-btn span { color: #fff; font-size: 18px; line-height: 1; }
+.coins {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #5f4aa3;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px #7f6bc7, 0 2px 6px rgba(0,0,0,.25);
+  font-weight: 700;
+}
+.coin {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff8b8, #ffd34e 60%, #e3a600 100%);
+  box-shadow: inset 0 0 0 1px #f2e28f;
+  display: inline-block;
+}
+.avatar-btn {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 2px solid #c8bfff66;
+  background: linear-gradient(135deg, #8bb5ff, #2e63ff);
+  box-shadow: 0 2px 6px rgba(0,0,0,.35);
+  display: grid; place-items: center;
+  cursor: pointer;
+}
+.avatar-btn span { color: #fff; font-size: 18px; line-height: 1; }
 
-  /* ---------- Profile header ---------- */
-  .profile {
-    display: grid;
-    place-items: center;
-    padding: clamp(28px, 6vw, 48px) 16px 10px;
-    text-align: center;
-  }
+/* ---------- Profile header ---------- */
+.profile {
+  display: grid;
+  place-items: center;
+  padding: clamp(28px, 6vw, 48px) 16px 10px;
+  text-align: center;
+}
 
-  .username {
-    margin: 16px 0 4px;
-    font-size: clamp(26px, 5vw, 38px);
-    font-weight: 800;
-    letter-spacing: .5px;
-    color: #111;
-  }
-  .email {
-    margin: 0 0 16px;
-    font-size: clamp(14px, 3.2vw, 20px);
-    color: #1c1c1c;
-    opacity: .9;
-  }
+.username {
+  margin: 16px 0 4px;
+  font-size: clamp(26px, 5vw, 38px);
+  font-weight: 800;
+  letter-spacing: .5px;
+  color: #111;
+}
+.email {
+  margin: 0 0 16px;
+  font-size: clamp(14px, 3.2vw, 20px);
+  color: #1c1c1c;
+  opacity: .9;
+}
 
-  .profile-actions {
-    display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
-  }
-  .chip-btn {
-    background: #7347d9;
-    color: #fff;
-    border: none;
-    padding: 10px 22px;
-    font-size: clamp(14px, 3.5vw, 18px);
-    border-radius: 999px;
-    cursor: pointer;
-    box-shadow: 0 8px 18px rgba(0,0,0,.28);
-    text-decoration: none;
-  }
-  .chip-btn:hover { filter: brightness(1.05); transform: translateY(-1px); }
-  .chip-btn:active { transform: translateY(0); }
+.profile-actions {
+  display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
+}
+.chip-btn {
+  background: #7347d9;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  font-size: clamp(14px, 3.5vw, 18px);
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0,0,0,.28);
+  text-decoration: none;
+}
+.chip-btn:hover { filter: brightness(1.05); transform: translateY(-1px); }
+.chip-btn:active { transform: translateY(0); }
 
-  .choose-pic:hover { filter: brightness(1.05); transform: translateY(-1px); }
-  .choose-pic:active { transform: translateY(0); }
+.choose-pic:hover { filter: brightness(1.05); transform: translateY(-1px); }
+.choose-pic:active { transform: translateY(0); }
 
-  /* ---------- "My Doubts" block ---------- */
-  .doubts {
-    width: min(92%, 1100px);
-    margin: clamp(24px, 6vw, 42px) auto 72px;
-    position: relative;
-  }
-  .doubts-title {
-    display: inline-block;
-    background: #6f3bdd;
-    color: #fff;
-    padding: 14px 26px;
-    border-radius: 28px 28px 0 0;
-    font-weight: 800;
-    letter-spacing: 2px;
-    font-size: clamp(18px, 4.5vw, 36px);
-    box-shadow: 0 8px 18px rgba(0,0,0,.25);
-    margin-left: 12px;
-  }
-  .doubts-card {
-    background: #cfcfd3;
-    border-radius: 28px;
-    min-height: 220px;
-    box-shadow: 0 12px 26px rgba(0,0,0,.32);
-    margin-top: -10px; /* pulls up under the purple pill */
-  }
+/* ---------- "My Doubts" block ---------- */
+.doubts {
+  width: min(92%, 1100px);
+  margin: clamp(24px, 6vw, 42px) auto 72px;
+  position: relative;
+}
+.doubts-title {
+  display: inline-block;
+  background: #6f3bdd;
+  color: #fff;
+  padding: 14px 26px;
+  border-radius: 28px 28px 0 0;
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: clamp(18px, 4.5vw, 36px);
+  box-shadow: 0 8px 18px rgba(0,0,0,.25);
+  margin-left: 12px;
+}
+.doubts-card {
+  background: #cfcfd3;
+  border-radius: 28px;
+  min-height: 220px;
+  box-shadow: 0 12px 26px rgba(0,0,0,.32);
+  margin-top: -10px; /* pulls up under the purple pill */
+}
 
-  /* ---------- Small screens tweaks ---------- */
-  @media (max-width: 640px) {
-    .navbar { padding: 10px 14px; }
-    .logo { font-size: 16px; }
-    .nav-links { gap: 18px; }
-    .coins { padding: 5px 10px; }
-    .doubts-title { margin-left: 6px; }
-  }
+/* ---------- Small screens tweaks ---------- */
+@media (max-width: 640px) {
+  .navbar { padding: 10px 14px; }
+  .logo { font-size: 16px; }
+  .nav-links { gap: 18px; }
+  .coins { padding: 5px 10px; }
+  .doubts-title { margin-left: 6px; }
+}
 
+/* ---------- Profile picture grid ---------- */
+.profile-main {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  justify-items: center;
+  align-items: center;
+  margin-top: 25px;
+  width: 100%;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+@media (max-width: 900px) {
   .profile-main {
-    position: relative;
+    grid-template-columns: repeat(2, 1fr);
   }
+}
 
-  .profile-main img {
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    object-fit: cover;
+@media (max-width: 500px) {
+  .profile-main {
+    grid-template-columns: repeat(1, 1fr);
   }
+}
+
+.pic-option {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.pic-option img {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.pic-option:hover {
+  transform: scale(1.05);
+}
+
+.pic-option input[type="radio"] {
+  display: none;
+}
+
+.pic-option input[type="radio"]:checked + img {
+  border: 4px solid #6f3bdd;
+  box-shadow: 0 0 20px 5px rgba(111, 59, 221, 0.8), 0 0 8px rgba(255,255,255,0.9);
+  transform: scale(1.1);
+  filter: brightness(1.15);
+  transition: all 0.25s ease-in-out;
+}
 {% endblock styles %}
 
 {% block body %}
 {% load static %}
   <!-- PROFILE HEADER -->
   <section class="profile">
-    <h2>Choose Your Profile picture</h2><br>
-    <div class = "profile-main">
-      <img src="static/1.jpeg" alt="Profile" class="choose-pic">
-      <img src="static/2.jpeg" alt="Profile">
-      <img src="static/3.jpeg" alt="Profile">
-      <img src="static/4.jpeg" alt="Profile"><br><br>
-      <img src="static/5.jpeg" alt="Profile">
-      <img src="static/6.jpeg" alt="Profile">
-      <img src="static/7.jpeg" alt="Profile">
-      <img src="static/8.jpeg" alt="Profile">
-    </div>
+    <h2>Choose Your Profile Picture</h2>
+
+    <form method="POST" action="{% url 'editprofile' %}">
+      {% csrf_token %}
+      <div class="profile-main">
+        {% for i in "12345678" %}
+          <label class="pic-option">
+            <input type="radio" name="profile_pic" value="{{ i }}.jpeg"
+                   {% if user.profile.random_number == forloop.counter %}checked{% endif %}>
+            <img src="{% static i|stringformat:'s' %}.jpeg" alt="Profile {{ i }}">
+          </label>
+        {% endfor %}
+      </div>
+
+      <br>
+      <button type="submit" class="chip-btn">Save Profile Picture</button>
+    </form>
+
     <h1 class="username">{{ request.user.username }}</h1>
     <p class="email">{{ request.user.email }}</p>
     <div class="profile-actions">
@@ -156,11 +208,11 @@
     </div>
   </section>
 
-  <!-- MY DOUBTS -->
+  <!-- MY DOUBTS (optional placeholder, left intact for structure) -->
   <section class="doubts">
     <div class="doubts-title">MY DOUBTS</div>
     <div class="doubts-card">
-      <!-- Put the user’s doubts here -->
+      <!-- You can populate user's doubts here later -->
     </div>
   </section>
 {% endblock body %}

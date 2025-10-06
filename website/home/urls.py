@@ -15,6 +15,7 @@ urlpatterns = [
     path('login', views.login_view, name="login"),
     path('signup', views.signup, name="signup"),
     path('ask-doubt-jn/', views.ask_doubt_jn, name='ask_doubt_jn'),
+    path('ask-doubt-fy/', views.ask_doubt_fy, name='ask_doubt_fy'),
     path('accounts/', include('allauth.urls')),
     path("upload-image/", views.upload_image, name="upload_image"),
 ]

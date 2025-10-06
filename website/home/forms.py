@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import UserImage, Doubt_jn
+from .models import UserImage, Doubt_jn, Doubt_fy
 
 class CustomUserSignupForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -27,4 +27,9 @@ class ImageUploadForm(forms.ModelForm):
 class DoubtForm_jn(forms.ModelForm):
     class Meta:
         model = Doubt_jn
+        fields = ['text'] 
+
+class DoubtForm_fy(forms.ModelForm):
+    class Meta:
+        model = Doubt_fy
         fields = ['text']        

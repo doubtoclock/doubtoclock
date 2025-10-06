@@ -19,7 +19,15 @@ class UserImage(models.Model):
 
 
 class Doubt_jn(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="doubts")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="doubts_jn")
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def _str_(self):
+        return f"Doubt by {self.user.username} at {self.created_at}"
+
+class Doubt_fy(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="doubts_fy")
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 

@@ -11,7 +11,7 @@
     .recent h2 { font-size:18px; margin-bottom:20px; }
     .question-card { background: rgba(255,255,255,0.2); padding:20px; border-radius:15px; margin-bottom:20px; font-size:16px; color:white; box-shadow:0 4px 6px rgba(0,0,0,0.2); }
     #chatBox{ position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; border:2px solid #ddd; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.2); padding:20px; width:400px; z-index:1000; }
-    .search-box { background:rgb(44, 29, 37); padding:12px 20px; border-radius:25px; width:250px; margin:20px auto; color:white; font-weight:bold; cursor:pointer; text-align:center; transition: transform 0.1s ease-in; }
+    .search-box { background:rgba(0, 0, 0, 0.7); padding:12px 20px; border-radius:25px; width:250px; margin:20px auto; color:white; font-weight:bold; cursor:pointer; text-align:center; transition: transform 0.1s ease-in; }
     .search-box:hover { transform: scale(1.05); }
     .buttons { display:flex; justify-content:center; align-items:center; gap:15px; margin:20px auto; }
     @media (max-width:480px){ .buttons { flex-direction:column; gap:10px; } }
@@ -45,10 +45,14 @@
   </form>
 
   <div class="recent">
-    <h2>RECENTLY ASKED DOUBT</h2>
-    <div class="question-card">Q</div>
-    <div class="question-card">Q</div>
-    <div class="question-card">Q</div>
+    <h2>RECENTLY ASKED DOUBTS</h2>
+    {% for doubt in doubts %}
+        <div class="question-card">
+            <strong>{{ doubt.user.username }}</strong>: {{ doubt.text }}
+        </div>
+    {% empty %}
+        <p>No doubts asked yet.</p>
+    {% endfor %}
   </div>
 
   <script>
