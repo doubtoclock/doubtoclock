@@ -6,6 +6,15 @@ load_dotenv()
 
 AIVEN_PASSWORD = os.getenv("AIVEN_PASSWORD")
 
+# EMAIL BACKEND
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv('myemail')  # your gmail
+EMAIL_HOST_PASSWORD = os.getenv('mypass')  # your app password
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 """
 Django settings for first project.
 
@@ -89,11 +98,14 @@ AUTHENTICATION_BACKENDS = [
 
 LOGIN_REDIRECT_URL = 'profilepage'   # where to go after login
 LOGOUT_REDIRECT_URL = '/'  # where to go after logout
-LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_ON_GET = True
 
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
 ACCOUNT_LOGIN_METHODS = {'email'}
+
+ACCOUNT_SIGNUP_REDIRECT_URL = '/account/email-verification-sent/'
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'profilepage'
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/'
 
 
 SOCIALACCOUNT_PROVIDERS = {

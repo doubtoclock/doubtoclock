@@ -22,7 +22,7 @@ def index(request):
         }
     return render(request, 'index.html', context)
 def jeeneet(request):
-    doubts = Doubt_jn.objects.all().order_by('-created_at')
+    doubts = Doubt_jn.objects.all().order_by('-created_at')[:5]
     context = {
             'coins': coins(request.user),
             'doubts': doubts
@@ -30,7 +30,7 @@ def jeeneet(request):
     return render(request, 'jeeneet.html', context)
 
 def firstyear(request):
-    doubts = Doubt_fy.objects.all().order_by('-created_at')
+    doubts = Doubt_fy.objects.all().order_by('-created_at')[:5]
     context = {
             'coins': coins(request.user),
             'doubts': doubts

@@ -1,0 +1,12 @@
+<html>
+<header>
+    <title>verify</title>
+</header>
+<body>
+    <div style="text-align:center; margin-top: 100px;">
+    <h2>✅ Verify Your Email</h2>
+    <p>We've sent a verification link to your email. Please check your inbox (and spam folder).</p>
+    <a href="{% url 'account_login' %}">Go to Login</a>
+    </div>
+</body>
+</html>
