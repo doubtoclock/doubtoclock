@@ -107,6 +107,14 @@ ACCOUNT_SIGNUP_REDIRECT_URL = '/account/email-verification-sent/'
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'profilepage'
 ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'doubtoclock@gmail.com'
+EMAIL_HOST_PASSWORD = 'jvijckaqhautxkhx'  # <-- paste your App Password here
+
+
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {

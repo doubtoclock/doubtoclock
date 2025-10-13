@@ -18,5 +18,5 @@ urlpatterns = [
     path('ask-doubt-fy/', views.ask_doubt_fy, name='ask_doubt_fy'),
     path('accounts/', include('allauth.urls')),
     path("upload-image/", views.upload_image, name="upload_image"),
-    path('activate/<uidb64>/<token>/', views.activate_account, name='activate'),
+   path('activate/<uidb64>/<token>/', views.activate_account, name='activate'),
 ]

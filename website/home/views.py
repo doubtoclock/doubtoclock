@@ -4,14 +4,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.http import JsonResponse
-
 from django.contrib.auth.models import User
-from django.contrib.sites.shortcuts import get_current_site
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
-from django.template.loader import render_to_string
 
 from .forms import CustomUserSignupForm, ImageUploadForm, DoubtForm_jn, DoubtForm_fy
 from .models import DoubtCoinWallet, UserImage, Doubt_jn, Doubt_fy
@@ -30,22 +27,26 @@ def index(request):
     context = {'coins': coins(request.user)}
     return render(request, 'index.html', context)
 
+
 def jeeneet(request):
     doubts = Doubt_jn.objects.all().order_by('-created_at')[:5]
     context = {'coins': coins(request.user), 'doubts': doubts}
     return render(request, 'jeeneet.html', context)
+
 
 def firstyear(request):
     doubts = Doubt_fy.objects.all().order_by('-created_at')[:5]
     context = {'coins': coins(request.user), 'doubts': doubts}
     return render(request, '1styear.html', context)
 
+
 def importantquestion(request):
     context = {'coins': coins(request.user)}
     return render(request, 'impques.html', context)
 
+
 def about(request):
-    return HttpResponse("this is about page") 
+    return HttpResponse("this is about page")
 
 
 # ----------------- USER AUTH -----------------
@@ -66,9 +67,11 @@ def login_view(request):
                 login(request, user)
                 return redirect('profilepage')
             else:
-                return render(request, 'login.html', {'error': 'Please verify your email before logging in.'})
+                messages.warning(request, "⚠️ Please verify your email before logging in.")
+                return render(request, 'login.html')
         else:
-            return render(request, 'login.html', {'error': 'Invalid username or password'})
+            messages.error(request, "❌ Invalid username or password.")
+            return render(request, 'login.html')
     return render(request, "login.html")
 
 
@@ -78,12 +81,18 @@ def signup(request):
         form = CustomUserSignupForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.is_active = False  # ✅ user inactive until verified
+            user.is_active = False  # require verification before login
             user.save()
 
+            # Send verification email
             send_verification_email(request, user)
 
-            messages.success(request, "✅ Signup successful! Please check your email to verify your account.")
+            # ✅ Show success message
+            messages.success(
+                request,
+                "✅ Signup successful! A verification email has been sent to your inbox. "
+                "Please check your email to activate your account."
+            )
             return redirect("login")
         else:
             return render(request, 'signup.html', {"form": form, 'error': form.errors})
@@ -94,34 +103,33 @@ def signup(request):
 
 # 📧 Send email verification link
 def send_verification_email(request, user):
-    from django.core.mail import send_mail
-    from django.contrib.sites.shortcuts import get_current_site
-    from django.utils.http import urlsafe_base64_encode
-    from django.utils.encoding import force_bytes
-    from django.contrib.auth.tokens import default_token_generator
-
     token = default_token_generator.make_token(user)
     uid = urlsafe_base64_encode(force_bytes(user.pk))
-    domain = get_current_site(request).domain
+    verification_link = request.build_absolute_uri(f"/activate/{uid}/{token}/")
 
-    verification_link = f"http://{domain}/activate/{uid}/{token}"
-
-    subject = "Verify your email - Your Website Name"
+    subject = "Verify your email - Doubt O'Clock"
     message = f"""
         Hi {user.username},
 
-        Thank you for signing up at Our Website!
+        Thanks for signing up at Doubt O'Clock!
 
-        Please click the link below to verify your email address and activate your account:
+        Please verify your email by clicking the link below:
         {verification_link}
 
-        If you didn’t request this, you can ignore this email.
+        If you didn’t request this, you can safely ignore this email.
 
-        Best,
-        Your Website Team
+        Best regards,
+        Team Doubt O'Clock
         """
 
-    send_mail(subject, message, 'no-reply@yourwebsite.com', [user.email])
+    send_mail(
+        subject,
+        message,
+        'doubtoclock@gmail.com',  # from email
+        [user.email],
+        fail_silently=False,
+    )
+
 
 # ✅ Activate user after clicking the link
 def activate_account(request, uidb64, token):
@@ -134,10 +142,10 @@ def activate_account(request, uidb64, token):
     if user is not None and default_token_generator.check_token(user, token):
         user.is_active = True
         user.save()
-        messages.success(request, "🎉 Your account has been activated! You can now log in.")
+        messages.success(request, "🎉 Your account has been activated successfully! You can now log in.")
         return redirect('login')
     else:
-        messages.error(request, "Invalid or expired activation link.")
+        messages.error(request, "❌ Invalid or expired activation link.")
         return redirect('signup')
 
 
@@ -155,7 +163,7 @@ def upload_image(request):
 
 def gallery(request):
     images = UserImage.objects.all()
-    return render(request, "gallery.html", {"images": images})    
+    return render(request, "gallery.html", {"images": images})
 
 
 # ----------------- DOUBTS -----------------
