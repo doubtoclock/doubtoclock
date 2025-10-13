@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.core.exceptions import ValidationError
 from .models import UserImage, Doubt_jn, Doubt_fy
 
 class CustomUserSignupForm(UserCreationForm):
@@ -18,7 +19,8 @@ class CustomUserSignupForm(UserCreationForm):
     
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.email = self.cleaned_data["email"]  # ✅ store email
+        user.email = self.cleaned_data["email"]
+        user.is_active = False  # 🚨 important: disable login until verified
         if commit:
             user.save()
         return user
@@ -33,9 +35,10 @@ class ImageUploadForm(forms.ModelForm):
 class DoubtForm_jn(forms.ModelForm):
     class Meta:
         model = Doubt_jn
-        fields = ['text'] 
+        fields = ['text']
+
 
 class DoubtForm_fy(forms.ModelForm):
     class Meta:
         model = Doubt_fy
-        fields = ['text']        
+        fields = ['text']
