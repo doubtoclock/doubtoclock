@@ -195,6 +195,9 @@ def ask_doubt_fy(request):
     return render(request, 'index.html', {'form': form})
 
 
+
+
+
 # ----------------- PROFILE EDIT -----------------
 @login_required(login_url='login')
 def editprofile(request):
