@@ -1,2 +1,8 @@
 Django
 mysqlclient
+cloudinary 
+django-cloudinary-storage
+python-dotenv
+django-allauth
+PyJWT
+cryptography
